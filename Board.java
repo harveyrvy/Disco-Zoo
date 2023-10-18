@@ -1,4 +1,4 @@
-
+import java.util.Arrays;
 
 public class Board {
     
@@ -17,8 +17,7 @@ public class Board {
 
     @Override
     public String toString() {
-        System.out.println(this.matrix);
-        return this.matrix.toString();
+        return Arrays.deepToString(this.matrix);
     }
 
 
