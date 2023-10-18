@@ -10,8 +10,10 @@ public class Main {
 
 
     public static void main(String[] args) {
-        System.out.println("Hello World");
         Board board = createBoard();
+        System.out.println(board.toString());
+        Animal rabbit = new Animal("Rabbit");
+        board.changeBoard(0,1,rabbit);
         System.out.println(board.toString());
 
     }

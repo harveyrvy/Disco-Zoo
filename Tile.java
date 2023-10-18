@@ -1,4 +1,4 @@
-import java.util.Arrays;
+
 
 public class Tile {
     
@@ -11,8 +11,19 @@ public class Tile {
         animal = new Animal("None");
     }
 
+    public Tile(Animal animal){
+        state = true; 
+        this.animal = animal;
+    }
+
+
     @Override
     public String toString() {
-        return "(" + this.state + ", " + this.animal.name + ")";
+        if (this.state == false) {
+            return "Empty";
+        }
+        else {
+            return this.animal.name;
+        }
     } 
 }
