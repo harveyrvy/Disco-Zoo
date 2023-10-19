@@ -1,6 +1,5 @@
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
+
 
 public class Board {
     
@@ -16,12 +15,17 @@ public class Board {
     }
 
 
-    public void changeBoard(int startX, int startY, Animal animal){
+    public void changeBoard(int startX, int startY, Animal animal) throws Exception{
         Pair[] tilesToBeChanged = animal.tiles;
         for (int i = 0; i < tilesToBeChanged.length; i++) {
-            System.out.println("Changing tile");
-            System.out.println(tilesToBeChanged[i]);
-            System.out.println(tilesToBeChanged[i].getX());
+            // First check for errors when placing the animal
+            if(startX + tilesToBeChanged[i].getX() < 0 || startX + tilesToBeChanged[i].getX() > 4 || startY + tilesToBeChanged[i].getY() < 0 || startY + tilesToBeChanged[i].getY() > 4 ){
+                throw new Exception("Animal will be placed outside of board");
+            }
+            if (this.matrix[startX + tilesToBeChanged[i].getX()][startY + tilesToBeChanged[i].getY()].state != false) {
+                throw new Exception("Replacing over another animal");
+            }
+            // ...then place the animal if all is okay
             this.matrix[startX + tilesToBeChanged[i].getX()][startY + tilesToBeChanged[i].getY()] = new Tile(animal);
         }
     }

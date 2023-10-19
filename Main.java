@@ -1,5 +1,4 @@
-import java.util.ArrayList;
-import java.util.Collection;
+
 
 /**
  * Hello
@@ -18,13 +17,13 @@ public class Main {
         return r1;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
         Board board = createBoard();
         Animal r1 = createFarmAnimals();
         Animal sheep = new Animal("Sheep");
         board.changeBoard(0,1,sheep);
         board.changeBoard(0,0,r1);
-        System.out.println(board.toString());
+        System.out.print(board.toString());
 
     }
 
