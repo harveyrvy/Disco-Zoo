@@ -1,3 +1,5 @@
+
+
 /**
  * Hello
  */
@@ -9,12 +11,24 @@ public class Main {
     }
 
 
-    public static void main(String[] args) {
+
+
+
+    public static Animal createFarmAnimals(){
+        Pair[] rabbitShape = {new Pair(0,0), new Pair(1,0), new Pair(2,0), new Pair(3,0)};
+        final Animal r1 = new Animal("Rabbit", rabbitShape); 
+        return r1;
+    }
+
+    public static void main(String[] args) throws Exception {
         Board board = createBoard();
-        System.out.println(board.toString());
-        Animal rabbit = new Animal("Rabbit");
-        board.changeBoard(0,1,rabbit);
-        System.out.println(board.toString());
+        Animal r1 = createFarmAnimals();
+        board.changeBoard(0,0,r1);
+        board.printBoard();
+        board.printCount();
 
     }
+
+    
+
 }
