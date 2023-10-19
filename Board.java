@@ -1,9 +1,8 @@
-import java.util.Arrays;
-
 
 public class Board {
     
     Tile[][] matrix = new Tile[5][5];
+    int[][] counts = new int[5][5];
 
     Board(){
         generateDefaultBoard();
@@ -27,6 +26,8 @@ public class Board {
             }
             // ...then place the animal if all is okay
             this.matrix[startX + tilesToBeChanged[i].getX()][startY + tilesToBeChanged[i].getY()] = new Tile(animal);
+            // add a count to the tile where an animal is
+            this.counts[startX + tilesToBeChanged[i].getX()][startY + tilesToBeChanged[i].getY()] += 1;
         }
     }
 
@@ -34,15 +35,39 @@ public class Board {
         for (int i = 0; i < this.matrix.length; i++) {
             for (int j = 0; j < this.matrix[i].length; j++) {
                 this.matrix[i][j] = new Tile();
+                this.counts[i][j] = 0;
             }
         }
     }
 
+    public void printBoard(){
+        int rows = matrix.length;
+        int columns = matrix[0].length;
+        String str = "";
 
-    @Override
-    public String toString() {
-        return Arrays.deepToString(this.matrix);
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                str += matrix[i][j] + "\t";
+            }
+            System.out.println(str);
+            str = "";
+        }
+        System.out.println();
     }
 
+    public void printCount(){
+        int rows = counts.length;
+        int columns = counts[0].length;
+        String str = "";
+
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < columns; j++) {
+                str += counts[i][j] + "\t";
+            }
+            System.out.println(str);
+            str = "";
+        }
+        System.out.println();
+    }
     
 }

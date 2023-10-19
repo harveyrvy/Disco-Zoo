@@ -11,6 +11,9 @@ public class Main {
     }
 
 
+
+
+
     public static Animal createFarmAnimals(){
         Pair[] rabbitShape = {new Pair(0,0), new Pair(1,0), new Pair(2,0), new Pair(3,0)};
         final Animal r1 = new Animal("Rabbit", rabbitShape); 
@@ -20,10 +23,9 @@ public class Main {
     public static void main(String[] args) throws Exception {
         Board board = createBoard();
         Animal r1 = createFarmAnimals();
-        Animal sheep = new Animal("Sheep");
-        board.changeBoard(0,1,sheep);
         board.changeBoard(0,0,r1);
-        System.out.print(board.toString());
+        board.printBoard();
+        board.printCount();
 
     }
 
